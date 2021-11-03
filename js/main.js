@@ -1,15 +1,25 @@
-// console.log("coucou toi");
+// cache back et montre face
+console.log("Michel");
 
-// change the appearance on click
 
-document.getElementById("pair_1_1").addEventListener("click", function(){
+// function hideAndShow() {
+// console.log("Michel");
+//     let faces = document.getElementsByClassName("face");
+//     let backs = document.getElementsByClassName("back");
+//     let cards = document.getElementsByClassName("cards");
 
-    let toHide = document.getElementById("pair_1_1");
-    let toShow = document.getElementById("replace");
-    toHide.classList.remove(toHide);
-    toShow.classList.add(toShow);
-    hideAndshow(toHide, toShow);
+//     console.log(faces);
+//     console.log(backs);
+//     console.log(cards);
+
+// backs.classList.remove("hide");
+
+
+// };
+// hideAndShow();
+
+document.getElementsByClassName("cards").addEventListener("click", function(e){
+    e.preventdefault();
+    let backs = document.getElementsByClassName("back");
+    this.remove(backs);
 });
-
-
-        
