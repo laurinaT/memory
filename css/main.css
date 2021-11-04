@@ -86,24 +86,46 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-   .cards {
-     position: relative;
-     height: 27vh;
+   .flip-card{
+    width: 150px;
+    height: 200px;
+    border: 4px solid greenyellow;
+    background-color: transparent;
+    perspective: 1000px;
    }
 
-   .back, .face {
-    position: absolute; 
-    top:0;
-    left:0;
+   .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
   }
 
-  .face {
-    z-index: 0;
+   .face{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+   }
+ 
+   .flip-card-back {
+   border: 2px solid aqua;
+   transform: rotateY(180deg);
   }
 
-  .hide {
-    display: none;
+ .flip-card-front {
+  background-image: url("../img/pngtree-colorful-squares-square-background-image_60596.jpg");
+  border: 2px solid rgb(255, 0, 212);
   }
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
