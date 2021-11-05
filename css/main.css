@@ -86,10 +86,60 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body {
+background-color: #191824;
+color: #e0c088;
+overflow: hidden;
+height: 100%;
+width: 100%;
+position: relative;
+  
+} 
+
+#starBackground{
+  opacity: 0.4;
+  z-index: -1;
+background-image: url("../img/etoiles.png");
+height: 200%;
+width: 200%;
+position: absolute;
+top:-50%;
+left: -50%;
+}
+
+@-webkit-keyframes rotating {
+  from{
+      -webkit-transform: rotate(0deg);
+  }
+  to{
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  -webkit-animation: rotating 500s linear infinite;
+} 
+
+h1, h4{
+  margin: 1em;
+}
+
+#banniere {
+  background-repeat: no-repeat;
+  margin: 3em;
+}
+
+#container{
+  height: 70vh;
+}
+
+
+
+
    .flip-card{
-    width: 150px;
+    width: 132px;
     height: 200px;
-    border: 4px solid greenyellow;
+    box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.75);
     background-color: transparent;
     perspective: 1000px;
    }
@@ -121,8 +171,7 @@ textarea {
   }
 
  .flip-card-front {
-  background-image: url("../img/pngtree-colorful-squares-square-background-image_60596.jpg");
-  border: 2px solid rgb(255, 0, 212);
+  background-image: url("../img/card_front.jpg");
   }
 
 
