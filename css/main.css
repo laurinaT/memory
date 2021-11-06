@@ -102,13 +102,22 @@ body {
     color: #e0c088;
 }
 
+
+/* ____________________________fond rotatif*/
+
 #starBackground {
     display: none;
 }
 
+
+/* ____________________________fond cartes*/
+
 #deck {
     flex-wrap: wrap;
 }
+
+
+/* ____________________________card contenant inner card, le front et le back */
 
 .flip-card {
     width: 85px;
@@ -137,13 +146,15 @@ body {
 }
 
 .flip-card-back {
-    border: 1px solid aqua;
     transform: rotateY(180deg);
 }
 
 .flip-card-front {
     background-image: url("../img/card_front.jpg");
 }
+
+
+/* ____________________________@media */
 
 @media only screen and (min-width: 500px) {
     .flip-card {
