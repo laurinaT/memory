@@ -15,7 +15,7 @@ const table = [
 ];
 
 let deck = document.getElementById("deck");
-let beginCard = '<div class="row align-items-center justify-content-center cards col-4 col-lg-3 m-0 my-4 p-0"><div class="flip-card m-0 p-0"><div class="flip-card-inner m-0 p-0"><div class="flip-card-front face m-0 p-0"></div><div class="flip-card-back face m-0 p-0" style="background-image: url(';
+let beginCard = '<div class="row align-items-center justify-content-center cards col col-4 col-lg-3 m-0 my-3 p-0"><div class="flip-card m-0 p-0"><div class="flip-card-inner m-0 p-0"><div class="flip-card-front face m-0 p-0"></div><div class="flip-card-back face m-0 p-0 img-fluid" style="background-image: url(';
 let endCard = ');"></div></div></div></div>';
 let numberReturnedCards = 0; 
 
@@ -55,15 +55,19 @@ for (let i = 0; i < flipCardInner.length ; i++) {
       numberReturnedCards--;
       this.style.boxShadow="0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
     }
+    if(numberReturnedCards === 2 ){
+      console.log(numberReturnedCards);
+      flipCardInner[i].style.transform="rotateY(0deg)";
+      flipCardInner[i].classList.remove("returned");
+    }
     else{
     this.style.transform="rotateY(180deg)";
     this.classList.add("returned");
     numberReturnedCards++;
-    console.log(numberReturnedCards);
+    //console.log(numberReturnedCards);
     this.style.boxShadow="0px 0px 10px 4px rgba(224, 192, 136, 0.75)";
     }
   });
 }
-
 
 
