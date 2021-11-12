@@ -19,78 +19,88 @@ let endCard = ');"></div></div></div></div>';
 let numberReturnedCards = 0;
 let firstCard = "";
 let secondCard = "";
+let numberPair = 0;
 
-function shuffle(array) {
-    let currentIndex = array.length;
-    let randomIndex;
+ 
+	function shuffle(array) {
+		let currentIndex = array.length;
+		let randomIndex;
 
-    // While there remain elements to shuffle...
-    while (currentIndex != 0) {
+		// While there remain elements to shuffle...
+		while (currentIndex != 0) {
 
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex--;
 
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]
-        ];
-    }
+			// And swap it with the current element.
+			[array[currentIndex], array[randomIndex]] = [
+				array[randomIndex], array[currentIndex]
+			];
+		}
 
-    return array;
-}
+		return array;
+	}
 
-shuffle(table);
-
-
-for (let i = 0; i < 12; i++) {
-    deck.innerHTML += beginCard + "'" + table[i][0] + "'" + endCard;
-}
+	shuffle(table);
 
 
-let flipCardInner = document.getElementsByClassName("flip-card-inner");
+	for (let i = 0; i < 12; i++) {
+		deck.innerHTML += beginCard + "'" + table[i][0] + "'" + endCard;
+	}
 
-function flipCard() {
-    if (numberReturnedCards < 2) {
-        this.style.transform = "rotateY(180deg)";
-        this.classList.add("returned");
-        numberReturnedCards++;
-        this.style.boxShadow = "0px 0px 10px 4px rgba(224, 192, 136, 0.75)";
-        this.querySelector(".flip-card-back").style.boxShadow = "0px 0px 3px 1px rgba(0, 255, 255, 0.97)";
-        if (numberReturnedCards === 1) {
-            firstCard = this;
-        }
-        if (numberReturnedCards === 2) {
-            secondCard = this;
-            // checkMatch(firstCard, secondCard);
-			setTimeout(checkMatch, 1000, firstCard, secondCard);
-        }
-    }
-}
 
-for (let i = 0; i < flipCardInner.length; i++) {
-    flipCardInner[i].addEventListener("click", flipCard);
-}
+	let flipCardInner = document.getElementsByClassName("flip-card-inner");
 
-function checkMatch(firstCard, secondCard) {
-    if (firstCard.querySelector(".flip-card-back").style.backgroundImage ===
-        secondCard.querySelector(".flip-card-back").style.backgroundImage) {
+	function flipCard() {
+		if (numberReturnedCards < 2) {
+			this.style.transform = "rotateY(180deg)";
+			this.classList.add("returned");
+			numberReturnedCards++;
+			this.style.boxShadow = "0px 0px 10px 4px rgba(224, 192, 136, 0.75)";
+			this.querySelector(".flip-card-back").style.boxShadow = "0px 0px 3px 1px rgba(0, 255, 255, 0.97)";
+			if (numberReturnedCards === 1) {
+				firstCard = this;
+			}
+			if (numberReturnedCards === 2) {
+				secondCard = this;
+				// checkMatch(firstCard, secondCard);
+				setTimeout(checkMatch, 1000, firstCard, secondCard);
+			}
+		}
+	}
 
-        numberReturnedCards = 0;
-        firstCard.removeEventListener("click", flipCard);
-        secondCard.removeEventListener("click", flipCard);
-        firstCard.style.boxShadow = "0px 0px 15px 4px rgba(224, 192, 136, 0.75)";
-        secondCard.style.boxShadow = "0px 0px 15px 4px rgba(224, 192, 136, 0.75)";
+	for (let i = 0; i < flipCardInner.length; i++) {
+		flipCardInner[i].addEventListener("click", flipCard);
+	}
 
-    } else {
-        numberReturnedCards = 0;
-        firstCard.style.transform = "rotateY(0deg)";
-        firstCard.classList.remove("returned");
-        firstCard.style.boxShadow = "0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
-        firstCard.querySelector(".flip-card-back").style.boxShadow = "none";
-        secondCard.style.transform = "rotateY(0deg)";
-        secondCard.classList.remove("returned");
-        secondCard.style.boxShadow = "0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
-        secondCard.querySelector(".flip-card-back").style.boxShadow = "none";
-    }
-}
+	function checkMatch(firstCard, secondCard) {
+		if (firstCard.querySelector(".flip-card-back").style.backgroundImage ===
+			secondCard.querySelector(".flip-card-back").style.backgroundImage) {
+
+			numberReturnedCards = 0;
+			numberPair++;
+			firstCard.removeEventListener("click", flipCard);
+			secondCard.removeEventListener("click", flipCard);
+			firstCard.style.boxShadow = "0px 0px 15px 4px rgba(224, 192, 136, 0.75)";
+			secondCard.style.boxShadow = "0px 0px 15px 4px rgba(224, 192, 136, 0.75)";
+			if(numberPair === 6){
+			alert("Vous avez gagné ! ");
+			}
+
+		} else {
+			numberReturnedCards = 0;
+			firstCard.style.transform = "rotateY(0deg)";
+			firstCard.classList.remove("returned");
+			firstCard.style.boxShadow = "0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
+			firstCard.querySelector(".flip-card-back").style.boxShadow = "none";
+			secondCard.style.transform = "rotateY(0deg)";
+			secondCard.classList.remove("returned");
+			secondCard.style.boxShadow = "0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
+			secondCard.querySelector(".flip-card-back").style.boxShadow = "none";
+		}
+console.log(numberPair);
+
+	}
+
+
