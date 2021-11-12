@@ -59,23 +59,23 @@ function flipCard() {
         this.querySelector(".flip-card-back").style.boxShadow = "0px 0px 3px 1px rgba(0, 255, 255, 0.97)";
         if (numberReturnedCards === 1) {
             firstCard = this;
-            console.log(firstCard);
         }
         if (numberReturnedCards === 2) {
             secondCard = this;
-            console.log(secondCard);
-            checkMatch(firstCard, secondCard);
+            // checkMatch(firstCard, secondCard);
+			setTimeout(checkMatch, 1000, firstCard, secondCard);
         }
     }
 }
-
 
 for (let i = 0; i < flipCardInner.length; i++) {
     flipCardInner[i].addEventListener("click", flipCard);
 }
 
 function checkMatch(firstCard, secondCard) {
-    if (firstCard.querySelector(".flip-card-back").style.backgroundImage === secondCard.querySelector(".flip-card-back").style.backgroundImage) {
+    if (firstCard.querySelector(".flip-card-back").style.backgroundImage ===
+        secondCard.querySelector(".flip-card-back").style.backgroundImage) {
+
         numberReturnedCards = 0;
         firstCard.removeEventListener("click", flipCard);
         secondCard.removeEventListener("click", flipCard);
@@ -84,7 +84,6 @@ function checkMatch(firstCard, secondCard) {
 
     } else {
         numberReturnedCards = 0;
-        //++ temps;
         firstCard.style.transform = "rotateY(0deg)";
         firstCard.classList.remove("returned");
         firstCard.style.boxShadow = "0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
@@ -94,21 +93,4 @@ function checkMatch(firstCard, secondCard) {
         secondCard.style.boxShadow = "0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
         secondCard.querySelector(".flip-card-back").style.boxShadow = "none";
     }
-
-
 }
-
-
-
-
-
-
-
-// if (this.classList.contains("returned")) {
-// this.style.transform = "rotateY(0deg)";
-// this.classList.remove("returned");
-// numberReturnedCards = 0;
-// this.style.boxShadow = "0px 0px 15px 4px rgba(0, 0, 0, 0.75)";
-// this.querySelector(".flip-card-back").style.boxShadow = "none";
-
-// } else
